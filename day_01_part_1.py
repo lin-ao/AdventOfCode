@@ -4,7 +4,7 @@ def load_input(file_path: str) -> set:
 
 
 def update_list(input_list: list, threshold: int) -> list:
-    return [number for number in input_list if number > threshold]
+    return [number for number in input_list if number < threshold]
 
 
 def part_1(input_list: list, expected_sum: int) -> int:
@@ -14,7 +14,7 @@ def part_1(input_list: list, expected_sum: int) -> int:
         if expected_sum - number in input_half_2:
             return number * (expected_sum - number)
         else:
-            input_half_2 = update_list(input_half_2, number)
+            input_half_2 = update_list(input_half_2, expected_sum - number)
     return 0
 
 
