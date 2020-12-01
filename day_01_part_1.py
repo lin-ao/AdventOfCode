@@ -8,7 +8,7 @@ def update_list(input_list: list, threshold: int) -> list:
 
 
 def day_1_part_1(input_list: list, expected_sum: int) -> int:
-    input_half_1 = sorted([number for number in input_list if number <= int(expected_sum / 2)])
+    input_half_1 = sorted([number for number in input_list if number <= expected_sum // 2])
     input_half_2 = sorted(set(input_list).symmetric_difference(input_half_1))
     for number in input_half_1:
         if expected_sum - number in input_half_2:
