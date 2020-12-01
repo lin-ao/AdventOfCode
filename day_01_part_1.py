@@ -7,7 +7,7 @@ def update_list(input_list: list, threshold: int) -> list:
     return [number for number in input_list if number > threshold]
 
 
-def day_1_part_1(input_list: list, expected_sum: int) -> int:
+def part_1(input_list: list, expected_sum: int) -> int:
     input_half_1 = sorted([number for number in input_list if number <= expected_sum // 2])
     input_half_2 = sorted(set(input_list).symmetric_difference(input_half_1))
     for number in input_half_1:
@@ -20,7 +20,7 @@ def day_1_part_1(input_list: list, expected_sum: int) -> int:
 
 def main() -> None:
     input_list = load_input("day_01_input.txt")
-    answer = day_1_part_1(input_list, 2020)
+    answer = part_1(input_list, 2020)
     if not answer == 0:
         print(f"Answer: {answer}")
     else:
