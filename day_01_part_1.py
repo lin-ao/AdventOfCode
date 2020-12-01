@@ -1,4 +1,4 @@
-def load_input(file_path: str) -> set:
+def load_input(file_path: str) -> list:
     with open(file_path, "r") as inp:
         return [int(line.strip()) for line in inp]
 
