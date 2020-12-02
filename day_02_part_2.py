@@ -9,7 +9,8 @@ def verify_password(line: str) -> bool:
 
 def main() -> None:
     with open("day_02_input.txt", "r") as file:
-        print(f"Answer: {sum(verify_password(line) for line in file)}")
+        answer = sum(verify_password(line) for line in file)
+        print(f"Answer: {answer}")
 
 
 if __name__ == "__main__":
