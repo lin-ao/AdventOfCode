@@ -2,7 +2,7 @@ import re
 
 
 def verify_password(line: str) -> bool:
-    parser = re.compile(r"^(\d+)\-(\d+)\s(\w):\s(\w+)\s$")
+    parser = re.compile(r"^(\d+)-(\d+)\s(\w):\s(\w+)\s$")
     lower, upper, letter, password = map(lambda x: int(x) if x.isdigit() else x, parser.match(line).groups())
     return password.count(letter) in range(lower, upper + 1)
 
