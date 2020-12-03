@@ -1,4 +1,5 @@
 from math import prod
+
 from day_03_part_1 import load_input, check_trees
 
 
