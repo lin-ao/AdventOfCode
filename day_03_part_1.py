@@ -1,6 +1,6 @@
 def load_input(file_path: str) -> list:
-    with open(file_path, "r") as inp:
-        return [line.strip() for line in inp]
+    with open(file_path, "r") as file:
+        return [line.strip() for line in file]
 
 
 def check_trees(mapping: list, step: tuple) -> int:
