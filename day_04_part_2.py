@@ -4,35 +4,23 @@ from day_04_part_1 import parse_credentials
 
 
 def verify_birth_year(year: str) -> bool:
-    try:
-        return len(year) == 4 and 1920 <= int(year) <= 2002
-    except ValueError:
-        return False
+    return year.isdigit() and len(year) == 4 and 1920 <= int(year) <= 2002
 
 
 def verify_issue_year(year: str) -> bool:
-    try:
-        return len(year) == 4 and 2010 <= int(year) <= 2020
-    except ValueError:
-        return False
+    return year.isdigit() and len(year) == 4 and 2010 <= int(year) <= 2020
 
 
 def verify_expiration_year(year: str) -> bool:
-    try:
-        return len(year) == 4 and 2020 <= int(year) <= 2030
-    except ValueError:
-        return False
+    return year.isdigit() and len(year) == 4 and 2020 <= int(year) <= 2030
 
 
 def verify_height(height: str) -> bool:
-    try:
-        if height.endswith("cm"):
-            return 150 <= int(height.replace("cm", "")) <= 193
-        elif height.endswith("in"):
-            return 59 <= int(height.replace("in", "")) <= 76
-        else:
-            return False
-    except ValueError:
+    if height.endswith("cm"):
+        return height.replace("cm", "").isdigit() and 150 <= int(height.replace("cm", "")) <= 193
+    elif height.endswith("in"):
+        return height.replace("cm", "").isdigit() and 59 <= int(height.replace("in", "")) <= 76
+    else:
         return False
 
 
@@ -47,11 +35,7 @@ def verify_eye_color(color: str) -> bool:
 
 
 def verify_passport_id(pid: str) -> bool:
-    try:
-        int(pid)
-        return len(pid) == 9
-    except ValueError:
-        return False
+    return pid.isdigit() and len(pid) == 9
 
 
 def verify_document(document: dict) -> bool:
