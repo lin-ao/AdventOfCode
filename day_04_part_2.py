@@ -38,7 +38,7 @@ def verify_height(height: str) -> bool:
 
 def verify_hair_color(color: str) -> bool:
     parser = re.compile(r"^#[0-9a-f]{6}$")
-    return parser.match(color)
+    return bool(parser.match(color))
 
 
 def verify_eye_color(color: str) -> bool:
