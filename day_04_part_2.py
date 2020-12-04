@@ -72,7 +72,7 @@ def count_valid_documents(file_path: str) -> int:
 
 def main() -> None:
     answer = count_valid_documents("day_04_input.txt")
-    print(answer)
+    print(f"Answer: {answer}")
 
 
 if __name__ == "__main__":
