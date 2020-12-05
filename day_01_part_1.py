@@ -1,6 +1,6 @@
 def load_input(file_path: str) -> list:
     with open(file_path, "r") as file:
-        return [int(line.strip()) for line in file]
+        return [int(line) for line in file]
 
 
 def update_list(input_list: list, threshold: int) -> list:
