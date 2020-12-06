@@ -12,7 +12,7 @@ def count_answers(answers: list) -> int:
     return len(reduce(lambda x, y: x.intersection(y), map(set, answers)))
 
 
-def main():
+def main() -> None:
     answer = sum(count_answers(answer) for answer in load_input("day_06_input.txt"))
     print(f"Answer: {answer}")
 

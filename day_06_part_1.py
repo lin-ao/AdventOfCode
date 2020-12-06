@@ -11,7 +11,7 @@ def count_answers(answers: str) -> int:
     return len(set(answers))
 
 
-def main():
+def main() -> None:
     answer = sum(count_answers(answer) for answer in load_input("day_06_input.txt"))
     print(f"Answer: {answer}")
 
