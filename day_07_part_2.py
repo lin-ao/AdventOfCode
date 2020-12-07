@@ -34,13 +34,13 @@ def search_bags(target_colors: dict, rules_dict: dict, bags=0) -> int:
             bags += target_colors[color]
         return search_bags(to_search, rules_dict, bags)
     else:
-        return bags - 1
+        return bags
 
 
 def main() -> None:
     rules_dict = load_input("day_07_input.txt")
     colors_to_be_searched = {"shiny gold": 1}
-    answer = search_bags(colors_to_be_searched, rules_dict)
+    answer = search_bags(colors_to_be_searched, rules_dict) - 1
     print(f"Answer: {answer}")
 
 
