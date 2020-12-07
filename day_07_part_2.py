@@ -25,12 +25,12 @@ def search_bags(target_colors: dict, rules_dict: dict, bags=0) -> int:
     if target_colors:
         to_search = defaultdict(lambda: 0)
         contain_bag = set(target_colors.keys()).intersection(rules_dict.keys())
-        do_not_contain_bags = target_colors.keys() - contain_bag
+        do_not_contain_bag = target_colors.keys() - contain_bag
         for color in contain_bag:
             bags += target_colors[color]
             for item in rules_dict[color].items():
                 to_search[item[0]] += target_colors[color] * item[1]
-        for color in do_not_contain_bags:
+        for color in do_not_contain_bag:
             bags += target_colors[color]
         return search_bags(to_search, rules_dict, bags)
     else:
