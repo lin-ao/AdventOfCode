@@ -8,7 +8,7 @@ def parse_rule(rule: str) -> dict[str, dict[str, int]]:
     outer_bag, inner_bags = outer_parser.match(rule).groups()
     inner_parser = re.compile(r"(\d+) ([a-z ]+) bag[s]?")
     for inner_bag in inner_parser.findall(inner_bags):
-        rule_dict[outer_bag] |= ({inner_bag[1]: int(inner_bag[0])})
+        rule_dict[outer_bag] |= {inner_bag[1]: int(inner_bag[0])}
     return rule_dict
 
 

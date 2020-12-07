@@ -25,8 +25,8 @@ def search_bags(target_colors: set, rules_dict: dict, bags=None) -> int:
     if target_colors:
         to_search = set()
         for color in target_colors:
-            to_search |= (rules_dict[color])
-            bags |= (rules_dict[color])
+            to_search |= rules_dict[color]
+            bags |= rules_dict[color]
         return search_bags(to_search, rules_dict, bags)
     else:
         return len(bags)
