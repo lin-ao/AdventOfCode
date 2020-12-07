@@ -6,7 +6,7 @@ def parse_rule(rule: str) -> dict[str, dict[str, int]]:
     rule_dict = defaultdict(dict)
     outer_parser = re.compile(r"^([a-z ]+) bags contain ([a-z0-9, ]+).\n$")
     outer_bag, inner_bags = outer_parser.match(rule).groups()
-    inner_parser = re.compile(r"(\d+) ([a-z ]+) bag[s]?")
+    inner_parser = re.compile(r"(\d+) ([a-z ]+) bags?")
     for inner_bag in inner_parser.findall(inner_bags):
         rule_dict[outer_bag] |= {inner_bag[1]: int(inner_bag[0])}
     return rule_dict
