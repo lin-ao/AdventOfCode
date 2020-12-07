@@ -8,7 +8,7 @@ def parse_credentials(text: str) -> dict:
 
 def verify_document(document: dict) -> bool:
     valid_document = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
-    return valid_document.symmetric_difference(document.keys()) in [{"cid"}, set()]
+    return valid_document ^ document.keys() in [{"cid"}, set()]
 
 
 def count_valid_documents(file_path: str) -> int:
