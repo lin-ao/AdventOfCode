@@ -26,7 +26,8 @@ class HandheldGameConsole:
         if self.step in self.performed:
             pass
         else:
-            getattr(self, self.logic[self.step][0])(self.logic[self.step][1])
+            command, value = self.logic[self.step]
+            getattr(self, command)(value)
 
 
 def load_input(file_path: str) -> list[tuple]:

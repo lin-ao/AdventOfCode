@@ -23,7 +23,8 @@ class HandheldGameConsole:
 
     def execute(self) -> None:
         try:
-            getattr(self, self.logic[self.step][0])(self.logic[self.step][1])
+            command, value = self.logic[self.step]
+            getattr(self, command)(value)
         except IndexError:
             pass
 
