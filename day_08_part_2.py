@@ -1,3 +1,6 @@
+from day_08_part_1 import load_input
+
+
 class HandheldGameConsole:
     def __init__(self, logic: list[tuple]) -> None:
         self.logic = logic
@@ -23,15 +26,6 @@ class HandheldGameConsole:
             getattr(self, self.logic[self.step][0])(self.logic[self.step][1])
         except IndexError:
             pass
-
-
-def load_input(file_path: str) -> list[tuple]:
-    with open(file_path, "r") as file:
-        code_list = []
-        for code in file:
-            command, value = code.rstrip("\n").split(" ")
-            code_list.append((command, int(value)))
-        return code_list
 
 
 def fix_code(code: list[tuple], checked=None) -> list[tuple]:
