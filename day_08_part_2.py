@@ -2,7 +2,7 @@ from day_08_part_1 import load_input
 
 
 class HandheldGameConsole:
-    def __init__(self, logic: list[tuple]) -> None:
+    def __init__(self, logic: list[tuple[str, int]]) -> None:
         self.logic = logic
         self.accumulator = 0
         self.step = 0
@@ -29,7 +29,7 @@ class HandheldGameConsole:
             pass
 
 
-def fix_code(code: list[tuple], checked=None) -> list[tuple]:
+def fix_code(code: list[tuple[str, int]], checked=None) -> list[tuple[str, int]]:
     if checked is None:
         checked = []
     switches = {"jmp", "nop"}

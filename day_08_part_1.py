@@ -1,5 +1,5 @@
 class HandheldGameConsole:
-    def __init__(self, logic: list[tuple]) -> None:
+    def __init__(self, logic: list[tuple[str, int]]) -> None:
         self.logic = logic
         self.accumulator = 0
         self.step = 0
@@ -30,7 +30,7 @@ class HandheldGameConsole:
             getattr(self, command)(value)
 
 
-def load_input(file_path: str) -> list[tuple]:
+def load_input(file_path: str) -> list[tuple[str, int]]:
     with open(file_path, "r") as file:
         code_list = []
         for code in file:
