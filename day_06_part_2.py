@@ -2,13 +2,13 @@ from functools import reduce
 from typing import Iterable
 
 
-def load_input(file_path: str) -> Iterable[list]:
+def load_input(file_path: str) -> Iterable[list[str]]:
     with open(file_path, "r") as file:
         for answer in file.read().rstrip("\n").split("\n\n"):
             yield answer.split("\n")
 
 
-def count_answers(answers: list) -> int:
+def count_answers(answers: list[str]) -> int:
     return len(reduce(lambda x, y: x.intersection(y), map(set, answers)))
 
 

@@ -19,7 +19,7 @@ def load_input(file_path: str) -> dict[str, set]:
     return rules_dict
 
 
-def search_bags(target_colors: set, rules_dict: dict, bags=None) -> int:
+def search_bags(target_colors: set, rules_dict: dict[str, set], bags=None) -> int:
     if bags is None:
         bags = set()
     if target_colors:

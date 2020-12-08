@@ -1,13 +1,13 @@
-def load_input(file_path: str) -> list:
+def load_input(file_path: str) -> list[int]:
     with open(file_path, "r") as file:
         return [int(line) for line in file]
 
 
-def update_list(input_list: list, threshold: int) -> list:
+def update_list(input_list: list[int], threshold: int) -> list[int]:
     return [number for number in input_list if number < threshold]
 
 
-def part_1(input_list: list, expected_sum: int) -> int:
+def part_1(input_list: list[int], expected_sum: int) -> int:
     input_half_1 = sorted([number for number in input_list if number <= expected_sum // 2])
     input_half_2 = sorted(set(input_list).symmetric_difference(input_half_1))
     for number in input_half_1:

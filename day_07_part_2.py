@@ -21,7 +21,7 @@ def load_input(file_path: str) -> dict[str, dict[str, int]]:
     return rules_dict
 
 
-def search_bags(target_colors: dict, rules_dict: dict, bags=0) -> int:
+def search_bags(target_colors: dict[str, int], rules_dict: dict[str, dict[str, int]], bags=0) -> int:
     if target_colors:
         to_search = defaultdict(lambda: 0)
         contain_bag = target_colors.keys() & rules_dict.keys()

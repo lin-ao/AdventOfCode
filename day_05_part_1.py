@@ -1,7 +1,4 @@
-from typing import Tuple
-
-
-def convert_position(boarding_pass: str) -> Tuple[int, int]:
+def convert_position(boarding_pass: str) -> tuple[int, int]:
     row = int(boarding_pass.replace("F", "0").replace("B", "1")[:7], 2)
     col = int(boarding_pass.replace("L", "0").replace("R", "1")[7:], 2)
     return row, col

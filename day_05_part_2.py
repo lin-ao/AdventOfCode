@@ -2,7 +2,7 @@ from day_03_part_1 import load_input
 from day_05_part_1 import convert_position, calculate_seat_id
 
 
-def find_empty_seat(boarding_passes: list) -> int:
+def find_empty_seat(boarding_passes: list[str]) -> int:
     seat_ids = sorted([calculate_seat_id(convert_position(boarding_pass)) for boarding_pass in boarding_passes])
     seat = int(*{seat for seat in range(seat_ids[0], seat_ids[-1] + 1)}.symmetric_difference(seat_ids))
     return seat

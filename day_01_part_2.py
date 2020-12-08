@@ -1,7 +1,7 @@
 from day_01_part_1 import load_input, part_1
 
 
-def part_2(input_list: list, expected_sum: int) -> int:
+def part_2(input_list: list[int], expected_sum: int) -> int:
     for number in sorted(input_list):
         temporary_list = input_list[:]
         temporary_list.remove(number)
