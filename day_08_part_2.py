@@ -33,7 +33,7 @@ def fix_code(code: list[tuple], checked=None) -> list[tuple]:
         checked = []
     switches = {"jmp", "nop"}
     index = code.index(next(filter(lambda x: (x[0] == "jmp" or x[0] == "nop") and code.index(x) not in checked, code)))
-    code[index] = (*(switches ^ {code[index][0]}), code[index][1])
+    code[index] = (*switches - {code[index][0]}, code[index][1])
     try:
         HandheldGameConsole(code)
     except RecursionError:
