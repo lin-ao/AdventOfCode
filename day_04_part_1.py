@@ -1,12 +1,12 @@
 import re
 
 
-def parse_credentials(text: str) -> dict[str, str]:
+def parse_credentials(text: str) -> dict[str: str]:
     parser = re.compile(r"([a-z]{3}):(#?[a-z0-9]+)")
     return {match[0]: match[1] for match in parser.findall(text.replace("\n", " "))}
 
 
-def verify_document(document: dict[str, str]) -> bool:
+def verify_document(document: dict[str: str]) -> bool:
     valid_document = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
     return valid_document ^ document.keys() in [{"cid"}, set()]
 

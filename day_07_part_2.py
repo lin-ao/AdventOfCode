@@ -2,7 +2,7 @@ import re
 from collections import defaultdict
 
 
-def parse_rule(rule: str) -> dict[str, dict[str, int]]:
+def parse_rule(rule: str) -> dict[str: dict[str: int]]:
     rule_dict = defaultdict(dict)
     outer_parser = re.compile(r"^([a-z ]+) bags contain ([a-z0-9, ]+).\n$")
     outer_bag, inner_bags = outer_parser.match(rule).groups()
@@ -12,7 +12,7 @@ def parse_rule(rule: str) -> dict[str, dict[str, int]]:
     return rule_dict
 
 
-def load_input(file_path: str) -> dict[str, dict[str, int]]:
+def load_input(file_path: str) -> dict[str: dict[str: int]]:
     rules_dict = defaultdict(dict)
     with open(file_path, "r") as file:
         for line in file:
@@ -21,7 +21,7 @@ def load_input(file_path: str) -> dict[str, dict[str, int]]:
     return rules_dict
 
 
-def search_bags(target_colors: dict[str, int], rules_dict: dict[str, dict[str, int]], bags=0) -> int:
+def search_bags(target_colors: dict[str: int], rules_dict: dict[str: dict[str: int]], bags=0) -> int:
     if target_colors:
         to_search = defaultdict(lambda: 0)
         contain_bag = target_colors.keys() & rules_dict.keys()
