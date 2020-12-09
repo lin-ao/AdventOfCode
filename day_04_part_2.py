@@ -38,7 +38,7 @@ def verify_passport_id(pid: str) -> bool:
     return pid.isdigit() and len(pid) == 9
 
 
-def verify_document(document: dict[str: str]) -> bool:
+def verify_document(document: dict[str, str]) -> bool:
     valid_document = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
     if valid_document.symmetric_difference(document.keys()) in [{"cid"}, set()]:
         return all([verify_birth_year(document["byr"]), verify_issue_year(document["iyr"]),
