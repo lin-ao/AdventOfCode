@@ -18,7 +18,7 @@ def find_number_range(numbers: list[int], target: int) -> int:
             return min(number_range) + max(number_range)
 
 
-def main():
+def main() -> None:
     numbers = load_input("day_09_input.txt")
     target = find_number(numbers, preamble=25)
     answer = find_number_range(numbers, target)
