@@ -19,14 +19,14 @@ def verify_height(height: str) -> bool:
     if height.endswith("cm"):
         return height.replace("cm", "").isdigit() and 150 <= int(height.replace("cm", "")) <= 193
     elif height.endswith("in"):
-        return height.replace("cm", "").isdigit() and 59 <= int(height.replace("in", "")) <= 76
+        return height.replace("in", "").isdigit() and 59 <= int(height.replace("in", "")) <= 76
     else:
         return False
 
 
 def verify_hair_color(color: str) -> bool:
     parser = re.compile(r"^#[0-9a-f]{6}$")
-    return bool(parser.match(color))
+    return parser.match(color)
 
 
 def verify_eye_color(color: str) -> bool:
@@ -38,9 +38,9 @@ def verify_passport_id(pid: str) -> bool:
     return pid.isdigit() and len(pid) == 9
 
 
-def verify_document(document: dict[str, str]) -> bool:
+def verify_document(document: dict) -> bool:
     valid_document = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
-    if valid_document.symmetric_difference(document.keys()) in [{"cid"}, set()]:
+    if valid_document ^ document.keys() in [{"cid"}, set()]:
         return all([verify_birth_year(document["byr"]), verify_issue_year(document["iyr"]),
                    verify_expiration_year(document["eyr"]), verify_height(document["hgt"]),
                    verify_hair_color(document["hcl"]), verify_eye_color(document["ecl"]),
