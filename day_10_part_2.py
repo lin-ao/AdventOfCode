@@ -3,8 +3,8 @@ from math import prod
 from day_01_part_1 import load_input
 
 
-def find_valid_removals(adapters: list[int]) -> list[int]:
-    unrestricted_removal = []
+def find_valid_removals(adapters: list[int]) -> int:
+    unrestricted_removal = set()
     restricted_removal = []
     for i in range(1, len(adapters) - 1):
         if adapters[i + 1] - adapters[i - 1] <= 3:
@@ -17,7 +17,7 @@ def find_valid_removals(adapters: list[int]) -> list[int]:
                 unrestricted_removal.remove(adapters[i - 1])
                 restricted_removal.append((adapters[i - 1], adapters[i]))
             else:
-                unrestricted_removal.append(adapters[i])
+                unrestricted_removal.add(adapters[i])
     possible_unrestricted_removals = 2 ** len(unrestricted_removal)
     possible_restricted_removals = prod([2 ** len(item) - 1 for item in restricted_removal])
     return possible_unrestricted_removals * possible_restricted_removals
