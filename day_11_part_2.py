@@ -12,17 +12,17 @@ def first_seat(seats: list[tuple[int, int]], seating: list[list[str]]) -> Union[
 
 
 def generate_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> list[tuple[int, int]]:
-    nw = first_seat([(seat[0] - i, seat[1] - i) for i in range(1, min(seat[0], seat[1]) + 1)], seating)
-    n = first_seat([(seat[0] - i, seat[1]) for i in range(1, seat[0] + 1)], seating)
+    nw = first_seat(((seat[0] - i, seat[1] - i) for i in range(1, min(seat[0], seat[1]) + 1)), seating)
+    n = first_seat(((seat[0] - i, seat[1]) for i in range(1, seat[0] + 1)), seating)
     ne = first_seat(
-        [(seat[0] - i, seat[1] + i) for i in range(1, min(seat[0] + 1, len(seating[seat[0]]) - seat[1]))], seating)
-    e = first_seat([(seat[0], seat[1] + i) for i in range(1, len(seating[seat[0]]) - seat[1])], seating)
+        ((seat[0] - i, seat[1] + i) for i in range(1, min(seat[0] + 1, len(seating[seat[0]]) - seat[1]))), seating)
+    e = first_seat(((seat[0], seat[1] + i) for i in range(1, len(seating[seat[0]]) - seat[1])), seating)
     se = first_seat(
-        [(seat[0] + i, seat[1] + i) for i in range(1, min(len(seating) - seat[0], len(seating[seat[0]]) - seat[1]))],
+        ((seat[0] + i, seat[1] + i) for i in range(1, min(len(seating) - seat[0], len(seating[seat[0]]) - seat[1]))),
         seating)
-    s = first_seat([(seat[0] + i, seat[1]) for i in range(1, len(seating) - seat[0])], seating)
-    sw = first_seat([(seat[0] + i, seat[1] - i) for i in range(1, min(len(seating) - seat[0], seat[1] + 1))], seating)
-    w = first_seat([(seat[0], seat[1] - i) for i in range(1, seat[1] + 1)], seating)
+    s = first_seat(((seat[0] + i, seat[1]) for i in range(1, len(seating) - seat[0])), seating)
+    sw = first_seat(((seat[0] + i, seat[1] - i) for i in range(1, min(len(seating) - seat[0], seat[1] + 1))), seating)
+    w = first_seat(((seat[0], seat[1] - i) for i in range(1, seat[1] + 1)), seating)
     return [x for x in [nw, n, ne, e, se, s, sw, w] if x is not None]
 
 
