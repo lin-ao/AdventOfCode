@@ -1,3 +1,5 @@
+from typing import Union
+
 from day_11_part_1 import load_input, is_occupied
 
 
@@ -5,23 +7,22 @@ def is_seat(seat: tuple[int, int], seating: list[list[str]]):
     return seating[seat[0]][seat[1]] == "#" or seating[seat[0]][seat[1]] == "L"
 
 
+def first_seat(seats: list[tuple[int, int]], seating: list[list[str]]) -> Union[tuple[int, int], None]:
+    return next((seat for seat in seats if is_seat(seat, seating)), None)
+
+
 def generate_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> list[tuple[int, int]]:
-    nw = next((seat for seat in reversed([(seat[0] - i, seat[1] - i) for i in range(min(seat[0], seat[1]), 0, -1)])
-               if is_seat(seat, seating)), None)
-    n = next((seat for seat in reversed([(seat[0] - i, seat[1]) for i in range(seat[0], 0, -1)])
-              if is_seat(seat, seating)), None)
-    ne = next((seat for seat in reversed([(seat[0] - i, seat[1] + i) for i in range(min(seat[0], len(seating[seat[0]]) - 1 - seat[1]), 0, -1)])
-               if is_seat(seat, seating)), None)
-    e = next((seat for seat in reversed([(seat[0], seat[1] + i) for i in range(len(seating[seat[0]]) - 1 - seat[1], 0, -1)])
-              if is_seat(seat, seating)), None)
-    se = next((seat for seat in reversed([(seat[0] + i, seat[1] + i) for i in range(min(len(seating) - 1 - seat[0], len(seating[seat[0]]) - 1 - seat[1]), 0, -1)])
-               if is_seat(seat, seating)), None)
-    s = next((seat for seat in reversed([(seat[0] + i, seat[1]) for i in range(len(seating) - 1 - seat[0], 0, -1)])
-              if is_seat(seat, seating)), None)
-    sw = next((seat for seat in reversed([(seat[0] + i, seat[1] - i) for i in range(min(len(seating) - 1 - seat[0], seat[1]), 0, -1)])
-               if is_seat(seat, seating)), None)
-    w = next((seat for seat in reversed([(seat[0], seat[1] - i) for i in range(seat[1], 0, -1)])
-              if is_seat(seat, seating)), None)
+    nw = first_seat([(seat[0] - i, seat[1] - i) for i in range(1, min(seat[0], seat[1]) + 1)], seating)
+    n = first_seat([(seat[0] - i, seat[1]) for i in range(1, seat[0] + 1)], seating)
+    ne = first_seat(
+        [(seat[0] - i, seat[1] + i) for i in range(1, min(seat[0] + 1, len(seating[seat[0]]) - seat[1]))], seating)
+    e = first_seat([(seat[0], seat[1] + i) for i in range(1, len(seating[seat[0]]) - seat[1])], seating)
+    se = first_seat(
+        [(seat[0] + i, seat[1] + i) for i in range(1, min(len(seating) - seat[0], len(seating[seat[0]]) - seat[1]))],
+        seating)
+    s = first_seat([(seat[0] + i, seat[1]) for i in range(1, len(seating) - seat[0])], seating)
+    sw = first_seat([(seat[0] + i, seat[1] - i) for i in range(1, min(len(seating) - seat[0], seat[1] + 1))], seating)
+    w = first_seat([(seat[0], seat[1] - i) for i in range(1, seat[1] + 1)], seating)
     return [x for x in [nw, n, ne, e, se, s, sw, w] if x is not None]
 
 
