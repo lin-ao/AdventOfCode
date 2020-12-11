@@ -26,17 +26,15 @@ def update_seat(seat: tuple[int, int], seating: list[list[str]], updated_seating
         pass
 
 
-def update_seats(seating: list[list[str]], unchanged=False) -> tuple[list[list[str]], bool]:
-    unchanged = unchanged
+def update_seats(seating: list[list[str]]) -> list[list[str]]:
     updated_seating = [[seat for seat in row] for row in seating]
-    if unchanged:
-        return updated_seating, unchanged
+    for row in range(0, len(seating)):
+        for col in range(0, len(seating[row])):
+            update_seat((row, col), seating, updated_seating)
+    if seating == updated_seating:
+        return updated_seating
     else:
-        for row in range(0, len(seating)):
-            for col in range(0, len(seating[row])):
-                update_seat((row, col), seating, updated_seating)
-        unchanged = seating == updated_seating
-        return update_seats(updated_seating, unchanged)
+        return update_seats(updated_seating)
 
 
 def count_occupied(seating: list[list[str]]) -> int:
@@ -45,7 +43,7 @@ def count_occupied(seating: list[list[str]]) -> int:
 
 def main() -> None:
     seating = load_input("day_11_input.txt")
-    updated_seating = update_seats(seating)[0]
+    updated_seating = update_seats(seating)
     answer = count_occupied(updated_seating)
     print(f"Answer: {answer}")
 
