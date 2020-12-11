@@ -3,7 +3,7 @@ def load_input(file_path: str) -> list[list[str]]:
         return [list(line.rstrip("\n")) for line in file]
 
 
-def is_occupied(seat: tuple[int, int], seating: list[[list[str]]]):
+def occupied(seat: tuple[int, int], seating: list[[list[str]]]):
     return seating[seat[0]][seat[1]] == "#"
 
 
@@ -14,7 +14,7 @@ def generate_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> list[t
 
 
 def count_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> int:
-    return sum(is_occupied(seat, seating) for seat in generate_adjacent(seat, seating))
+    return sum(occupied(seat, seating) for seat in generate_adjacent(seat, seating))
 
 
 def update_seat(seat: tuple[int, int], seating: list[list[str]], updated_seating: list[list[str]]) -> None:
@@ -40,7 +40,7 @@ def update_seats(seating: list[list[str]], unchanged=False) -> tuple[list[list[s
 
 
 def count_occupied(seating: list[list[str]]) -> int:
-    return sum(is_occupied((row, col), seating) for row in range(0, len(seating)) for col in range(0, len(seating[row])))
+    return sum(occupied((row, col), seating) for row in range(0, len(seating)) for col in range(0, len(seating[row])))
 
 
 def main() -> None:
