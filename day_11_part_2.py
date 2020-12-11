@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Iterable, Union
 
 from day_11_part_1 import load_input, occupied
 
@@ -7,7 +7,7 @@ def is_seat(seat: tuple[int, int], seating: list[list[str]]):
     return seating[seat[0]][seat[1]] == "#" or seating[seat[0]][seat[1]] == "L"
 
 
-def first_seat(seats: list[tuple[int, int]], seating: list[list[str]]) -> Union[tuple[int, int], None]:
+def first_seat(seats: Iterable[tuple[int, int]], seating: list[list[str]]) -> Union[tuple[int, int], None]:
     return next((seat for seat in seats if is_seat(seat, seating)), None)
 
 
