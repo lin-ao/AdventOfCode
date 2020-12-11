@@ -1,3 +1,6 @@
+from typing import Iterable
+
+
 def load_input(file_path: str) -> list[list[str]]:
     with open(file_path, "r") as file:
         return [list(line.rstrip("\n")) for line in file]
@@ -7,7 +10,7 @@ def occupied(seat: tuple[int, int], seating: list[[list[str]]]):
     return seating[seat[0]][seat[1]] == "#"
 
 
-def generate_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> list[tuple[int, int]]:
+def generate_adjacent(seat: tuple[int, int], seating: list[list[str]]) -> Iterable[tuple[int, int]]:
     adjacent = [(seat[0] - 1, seat[1] - 1), (seat[0] - 1, seat[1]), (seat[0] - 1, seat[1] + 1), (seat[0], seat[1] - 1),
                 (seat[0], seat[1] + 1), (seat[0] + 1, seat[1] - 1), (seat[0] + 1, seat[1]), (seat[0] + 1, seat[1] + 1)]
     return filter(lambda x: True if 0 <= x[0] < len(seating) and 0 <= x[1] < len(seating[seat[0]]) else False, adjacent)
