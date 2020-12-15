@@ -7,7 +7,7 @@ def load_input(file_path: str) -> dict[int, int]:
 
 def game(number_dict: dict[int, int], turns: int) -> int:
     i = len(number_dict)
-    last_number = -1
+    last_number = None
     while i < turns:
         i += 1
         if last_number in number_dict:
