@@ -1,7 +1,7 @@
 import re
 
 
-def load_input(file_path: str) -> tuple[str]:
+def load_input(file_path: str) -> tuple[str, str, str]:
     with open(file_path, "r") as file:
         rules, my_ticket, tickets = file.read().split("\n\n")
         return rules, my_ticket, tickets
