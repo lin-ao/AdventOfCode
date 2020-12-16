@@ -16,12 +16,12 @@ def assign_fields(valid_tickets: list[tuple[int]], bounds: list[tuple[int]]) -> 
     possible_indexes = defaultdict(list)
     final_indexes = {}
     tickets_transformed = list(zip(*valid_tickets))
-    # Finding all possible values for each field
+    # Finding all possible values for each ticket field
     for bound in bounds:
         for field in tickets_transformed:
             if all(is_valid(value, bound) for value in field):
                 possible_indexes[bounds.index(bound)].append(tickets_transformed.index(field))
-    # Iteratively reducing the possible values for each field until each field only has one possible value on the ticket
+    # Iteratively reducing the possible values for each field until each field only has one possible value
     while any(len(item) > 1 for item in possible_indexes.values()):
         for possible in possible_indexes:
             if len(possible_indexes[possible]) == 1:
