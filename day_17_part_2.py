@@ -14,7 +14,7 @@ def neighbors(point: tuple[int, int, int, int]) -> list[tuple[Any]]:
     x = [point[1] - 1, point[1], point[1] + 1]
     y = [point[2] - 1, point[2], point[2] + 1]
     z = [point[3] - 1, point[3], point[3] + 1]
-    _neighbors = list(product(*[w, x, y, z]))
+    _neighbors = list(product(w, x, y, z))
     _neighbors.remove(point)
     return _neighbors
 
