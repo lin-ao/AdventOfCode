@@ -27,7 +27,7 @@ def update(pocket_dimension: list[tuple[int, int, int, int]], cycle: int) -> int
             for neighbor in neighbors(point):
                 possible[neighbor] += 1
         for point in possible:
-            if point in pocket_dimension and (possible[point] == 2 or possible[point] == 3):
+            if point in pocket_dimension and possible[point] == 2 or possible[point] == 3:
                 updated_pocket_dimension.append(point)
             elif point not in pocket_dimension and possible[point] == 3:
                 updated_pocket_dimension.append(point)
