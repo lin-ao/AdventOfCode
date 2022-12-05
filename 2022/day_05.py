@@ -35,7 +35,7 @@ def process_stacks(stacks: defaultdict[int, list[str]], instructions: list[tuple
 
 def process_stacks_ordered(stacks: defaultdict[int, list[str]], instructions: list[tuple[int, int, int]]) -> defaultdict[int, list[str]]:
     for number, source, target in instructions:
-        stacks[target] += (stacks[source][-number:])
+        stacks[target] += stacks[source][-number:]
         stacks[source] = stacks[source][:-number]
     return stacks
 
