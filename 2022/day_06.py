@@ -29,7 +29,7 @@ def main() -> None:
     assert get_marker("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14) == 29
     assert get_marker("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14) == 26
     answer_part_one = get_marker(load_input("day_06_input.txt"))
-    answer_part_two= get_marker(load_input("day_06_input.txt"), 14)
+    answer_part_two = get_marker(load_input("day_06_input.txt"), 14)
     print(f"Answer for part one: {answer_part_one}")
     print(f"Answer for part two: {answer_part_two}")
 
