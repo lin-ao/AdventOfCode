@@ -41,7 +41,7 @@ def count_safe_reports(reports: list[list[int]], with_dampener: bool = False) ->
 
 
 def main() -> None:
-    test_data: str = [
+    test_data: list[list[int]] = [
         [7, 6, 4, 2, 1],
         [1, 2, 7, 8, 9],
         [9, 7, 6, 2, 1],

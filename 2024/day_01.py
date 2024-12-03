@@ -25,7 +25,7 @@ def calculate_similarity(location_ids: list[list[int]]) -> int:
 
 
 def main() -> None:
-    test_data: str = [[3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3]]
+    test_data: list[list[int]] = [[3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3]]
     assert calculate_distance(location_ids=test_data) == 11
     assert calculate_similarity(location_ids=test_data) == 31
     location_ids = parse_input(_input=load_input(filename="day_01_input.txt"))
