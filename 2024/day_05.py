@@ -38,7 +38,7 @@ def fix_page_order(printing_rules: defaultdict[int, list[int]], page_order: list
             for j in range(len(page_order) - 1, i, -1):
                 if page_order[j] in printing_rules[page]:
                     page_order.pop(i)
-                    page_order.insert(j + 1, page)
+                    page_order.insert(j, page)
                     return fix_page_order(printing_rules=printing_rules, page_order=page_order)
     return page_order
 
