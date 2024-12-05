@@ -7,12 +7,12 @@ def load_input(filename: str) -> str:
 
 
 def parse_input(_input: str) -> tuple[defaultdict[int, list[int]], list[list[int]]]:
-    input_one, input_two = _input.split('\n\n')
+    input_one, input_two = _input.split("\n\n")
     printing_rules = defaultdict(list)
-    for rule in input_one.strip().split('\n'):
-        rule = tuple(map(int, rule.split('|')))
+    for rule in input_one.strip().split("\n"):
+        rule = tuple(map(int, rule.split("|")))
         printing_rules[rule[1]].append(rule[0])
-    page_orders = [[int(x) for x in order.strip().split(',')] for order in input_two.strip().split('\n')]
+    page_orders = [[int(x) for x in order.strip().split(',')] for order in input_two.strip().split("\n")]
     return printing_rules, page_orders
 
 
@@ -44,10 +44,7 @@ def fix_page_order(printing_rules: defaultdict[int, list[int]], page_order: list
 
 
 def count_page_numbers(valid_page_orders: list[list[int]]) -> int:
-    page_number_sum = 0
-    for valid_page_order in valid_page_orders:
-        page_number_sum += valid_page_order[len(valid_page_order) // 2]
-    return page_number_sum
+    return sum([valid_page_order[len(valid_page_order) // 2] for valid_page_order in valid_page_orders])
 
 
 def main() -> None:
@@ -82,7 +79,12 @@ def main() -> None:
         97,13,75,29,47
     """
     test_printing_rules, test_page_orders = parse_input(_input=test_data)
-    assert count_page_numbers(valid_page_orders=get_valid_page_orders(printing_rules=test_printing_rules, page_orders=test_page_orders))
+    assert count_page_numbers(
+        valid_page_orders=get_valid_page_orders(
+            printing_rules=test_printing_rules,
+            page_orders=test_page_orders,
+            )
+        )
     assert count_page_numbers(
         valid_page_orders=[
             fix_page_order(printing_rules=test_printing_rules, page_order=page_order) 
@@ -91,7 +93,12 @@ def main() -> None:
         ]
     ) == 123
     printing_rules, page_orders = parse_input(_input=load_input(filename="day_05_input.txt"))
-    answer_part_one = count_page_numbers(valid_page_orders=get_valid_page_orders(printing_rules=printing_rules, page_orders=page_orders))
+    answer_part_one = count_page_numbers(
+        valid_page_orders=get_valid_page_orders(
+            printing_rules=printing_rules,
+            page_orders=page_orders,
+            )
+        )
     answer_part_two = count_page_numbers(
         valid_page_orders=[
             fix_page_order(printing_rules=printing_rules, page_order=page_order) 
