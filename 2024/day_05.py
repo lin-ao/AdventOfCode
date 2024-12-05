@@ -83,8 +83,8 @@ def main() -> None:
         valid_page_orders=get_valid_page_orders(
             printing_rules=test_printing_rules,
             page_orders=test_page_orders,
-            )
         )
+    ) == 143 
     assert count_page_numbers(
         valid_page_orders=[
             fix_page_order(printing_rules=test_printing_rules, page_order=page_order) 
